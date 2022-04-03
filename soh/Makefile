@@ -13,12 +13,8 @@ DEBUG ?= 1
 OPTFLAGS ?= -O0
 LTO ?= 0
 
-WARN := \
+WARNCXX := \
 	-Wno-return-type \
-	-Wno-incompatible-pointer-types \
-	-Wno-int-conversion \
-	-Wno-implicit-function-declaration \
-	-Wno-discarded-qualifiers \
 	-funsigned-char \
 	-m32 -mhard-float \
 	-fno-stack-protector \
@@ -31,8 +27,14 @@ WARN := \
 	-ffreestanding \
 	-fwrapv \
 
-CXXFLAGS := $(WARN) -std=c++20 -D_GNU_SOURCE -fpermissive -no-pie -nostdlib -march=i386
-CFLAGS := $(WARN) -std=c99 -D_GNU_SOURCE -no-pie -nostdlib -march=i386
+WARNC := $(WARNCXX) \
+	-Wno-incompatible-pointer-types \
+	-Wno-int-conversion \
+	-Wno-implicit-function-declaration \
+	-Wno-discarded-qualifiers \
+
+CXXFLAGS := $(WARNCXX) -std=c++20 -D_GNU_SOURCE -fpermissive -no-pie -nostdlib -march=i386
+CFLAGS := $(WARNC) -std=c99 -D_GNU_SOURCE -no-pie -nostdlib -march=i386
 LDFLAGS := -m32
 CPPFLAGS := -MMD
 
