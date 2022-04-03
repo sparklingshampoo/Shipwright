@@ -262,7 +262,9 @@ namespace Ship {
         dwHeight = Ship::stoi(Conf["WINDOW"]["WINDOW HEIGHT"], 240);
         dwWidth = Ship::stoi(Conf["WINDOW"]["FULLSCREEN WIDTH"], 1920);
         dwHeight = Ship::stoi(Conf["WINDOW"]["FULLSCREEN HEIGHT"], 1080);
-        dwMenubar = Ship::stoi(Conf["WINDOW"]["menubar"], 0);
+        dwMenubar = 0;
+        if (const auto& val = Conf["WINDOW"]["menubar"]; !val.empty())
+            dwMenubar = Ship::stoi(val, 0);
         const std::string& gfx_backend = Conf["WINDOW"]["GFX BACKEND"];
         SetWindowManager(&WmApi, &RenderingApi, gfx_backend);
 
