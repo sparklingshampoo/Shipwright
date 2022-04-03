@@ -40,6 +40,8 @@ Launch the game. If the window immediately closes, or if there are visual artifa
 
 Currently, DirectX 11 and OpenGL is supported. Change the renderer by opening the `shipofharkinian.ini` configuration file in notepad and add `sdl` to `gfx backend` for OpenGL or leave blank for DirectX.
 
+To show the menubar, press F1.
+
 ## Take The Survey
 Want to use cartridge readers in tandem with the OTRGui?
 Take [this survey](https://retroarchopenhardware.com/survey.php) to increase chances of this becoming reality.

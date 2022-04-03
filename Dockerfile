@@ -1,6 +1,6 @@
 
 
-FROM ubuntu:21.04 as build
+FROM debian:11 as build
 
 ENV LANG C.UTF-8
 ARG DEBIAN_FRONTEND=noninteractive
@@ -34,3 +34,4 @@ RUN git clone https://github.com/nigels-com/glew.git && \
 
 RUN mkdir /soh
 WORKDIR /soh
+

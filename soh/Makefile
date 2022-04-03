@@ -15,8 +15,21 @@ LTO ?= 0
 
 WARN := \
 	-Wno-return-type \
+	-Wno-incompatible-pointer-types \
+	-Wno-int-conversion \
+	-Wno-implicit-function-declaration \
+	-Wno-discarded-qualifiers \
 	-funsigned-char \
-	-m32 -mhard-float -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-strict-aliasing -fno-inline-functions -fno-inline-small-functions -fno-toplevel-reorder -ffreestanding -fwrapv \
+	-m32 -mhard-float \
+	-fno-stack-protector \
+	-fno-common \
+	-fno-zero-initialized-in-bss \
+	-fno-strict-aliasing \
+	-fno-inline-functions \
+	-fno-inline-small-functions \
+	-fno-toplevel-reorder \
+	-ffreestanding \
+	-fwrapv \
 
 CXXFLAGS := $(WARN) -std=c++20 -D_GNU_SOURCE -fpermissive -no-pie -nostdlib -march=i386
 CFLAGS := $(WARN) -std=c99 -D_GNU_SOURCE -no-pie -nostdlib -march=i386
