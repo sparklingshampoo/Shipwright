@@ -1,0 +1,52 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build (debug)",
+            "type": "shell",
+            "command": "docker",
+            "options": {
+                "cwd": "${workspaceRoot}"
+            },
+            "args": [
+                "run",
+                "--rm",
+                "-it",
+                "-v",
+                "$(pwd):/soh",
+                "soh",
+                "make",
+                "-C",
+                "soh",
+                "-j",
+                "$(nproc)"
+            ],
+            "problemMatcher": ["$gcc"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "clean",
+            "type": "shell",
+            "command": "docker",
+            "options": {
+                "cwd": "${workspaceRoot}"
+            },
+            "args": [
+                "run",
+                "--rm",
+                "-it",
+                "-v",
+                "$(pwd):/soh",
+                "soh",
+                "make",
+                "-C",
+                "soh",
+                "clean"
+            ],
+            "group": "build"
+        }
+    ]
+}
