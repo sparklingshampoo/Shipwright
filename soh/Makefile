@@ -39,8 +39,8 @@ LDFLAGS := -m32
 CPPFLAGS := -MMD
 
 ifneq ($(DEBUG),0)
-	CXXFLAGS += -g
-	CFLAGS += -g
+	CXXFLAGS += -g -DINCLUDE_GAME_PRINTF
+	CFLAGS += -g -DINCLUDE_GAME_PRINTF
 endif
 
 ifneq ($(ASAN),0)
@@ -817,6 +817,12 @@ all:
 setup:
 	python3 extract_baserom.py
 	$(MAKE) mpq
+
+otr:
+	rm -f ../OTRExporter/oot.otr
+	rm -f ./oot.otr
+	cd ../OTRExporter && python3 extract_assets.py
+	mv ../OTRExporter/oot.otr .
 
 mpq:
 	$(MAKE) -C ../libultraship

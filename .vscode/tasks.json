@@ -47,6 +47,27 @@
                 "clean"
             ],
             "group": "build"
+        },
+        {
+            "label": "build otr",
+            "type": "shell",
+            "command": "docker",
+            "options": {
+                "cwd": "${workspaceRoot}"
+            },
+            "args": [
+                "run",
+                "--rm",
+                "-it",
+                "-v",
+                "$(pwd):/soh",
+                "soh",
+                "make",
+                "-C",
+                "soh",
+                "otr"
+            ],
+            "group": "build"
         }
     ]
 }
