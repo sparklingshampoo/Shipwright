@@ -12,7 +12,7 @@ extern "C"
 #include "../../libultraship/libultraship/luslog.h"
 
 #if defined(INCLUDE_GAME_PRINTF) && !defined(NDEBUG)
-#define osSyncPrintf(fmt, ...) lusprintf(__FILE__, __LINE__, 0, fmt, __VA_ARGS__)
+#define osSyncPrintf(fmt, ...) lusprintf(__FILE__, __LINE__, 0, fmt __VA_OPT__(,) __VA_ARGS__)
 #else
 #define osSyncPrintf(fmt, ...) osSyncPrintfUnused(fmt, ##__VA_ARGS__)
 #endif
